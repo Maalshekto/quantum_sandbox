@@ -43,6 +43,11 @@ build {
     destination="/tmp/install_image.sh"
   }
 
+  provisioner "file" {
+    source = "nginx_jupyter.conf"
+    destination="/tmp/nginx_jupyter.conf"
+  }
+
   provisioner "shell" {
     environment_vars = [
       "FOO=hello world",

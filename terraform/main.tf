@@ -13,7 +13,7 @@ data "aws_ami" "app_ami" {
 }
 
 resource "aws_instance" "myec2" {
-    ami = "ami-0cccf8a08b002e126"  #data.aws_ami.app_ami.id
+    ami = "ami-0a3356555a1e3a8ef"  #data.aws_ami.app_ami.id
     instance_type = var.instance_type
     key_name = "devops-thomas"
     tags = var.aws_common_tag
