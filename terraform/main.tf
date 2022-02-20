@@ -1,7 +1,7 @@
 provider "aws" {
     region = "eu-west-3"
-    access_key = "MYACCESSKEY"
-    secret_key = "MYSECRETKEY"
+    access_key = "AKIARAFMGCGJQEIRCBKV"
+    secret_key = "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"
 }
 
 data "aws_ami" "app_ami" {
@@ -15,7 +15,7 @@ data "aws_ami" "app_ami" {
 }
 
 resource "aws_instance" "myec2" {
-    ami = "ami-0b6a0ec0d12e3bac1"  #data.aws_ami.app_ami.id
+    ami = "ami-0cccf8a08b002e126"  #data.aws_ami.app_ami.id
     instance_type = var.instance_type
     key_name = "devops-thomas"
     tags = var.aws_common_tag
@@ -26,7 +26,6 @@ resource "aws_instance" "myec2" {
     }
     provisioner "remote-exec" {
         inline = [
-          "sudo amazon-linux-extras install -y nginx1.12",
           "sudo systemctl start nginx"
         ]
         connection {
