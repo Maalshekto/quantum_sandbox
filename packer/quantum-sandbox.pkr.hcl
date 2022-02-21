@@ -48,6 +48,12 @@ build {
     destination="/tmp/nginx_jupyter.conf"
   }
 
+  provisioner "file" {
+    source = "jupyter_notebook_config.py"
+    destination="/tmp/jupyter_notebook_config.py"
+  }
+
+
   provisioner "shell" {
     environment_vars = [
       "FOO=hello world",

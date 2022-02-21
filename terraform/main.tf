@@ -13,7 +13,7 @@ data "aws_ami" "app_ami" {
 }
 
 resource "aws_instance" "myec2" {
-    ami = "ami-0a3356555a1e3a8ef"  #data.aws_ami.app_ami.id
+    ami = "ami-03e204cb92391b15a"  #data.aws_ami.app_ami.id
     instance_type = var.instance_type
     key_name = "devops-thomas"
     tags = var.aws_common_tag
@@ -24,7 +24,9 @@ resource "aws_instance" "myec2" {
     }
     provisioner "remote-exec" {
         inline = [
-          "sudo systemctl start nginx"
+          "sudo systemctl start nginx",
+          "nohup /opt/conda/bin/jupyter notebook &",
+          "sleep 2"
         ]
         connection {
           type = "ssh"
